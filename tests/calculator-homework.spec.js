@@ -1,16 +1,18 @@
 const { test, expect } = require('@playwright/test');
 const { CalculatorPage } = require('../pages/calculatorPage');
 
+// inputs have to be assigned strings
 const inputOne = '6';
 const inputTwo = '3';
 
+// expected outcomes are calculated once beforehand
 const addRes = `${Number(inputOne) + Number(inputTwo)}`;
 const subRes = `${Number(inputOne) - Number(inputTwo)}`;
 const mulRes = `${Number(inputOne) * Number(inputTwo)}`;
 const divRes = `${Number(inputOne) / Number(inputTwo)}`;
 const conRes = inputOne + inputTwo;
 
-const buildVersions = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const buildVersions = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']; // version 0 is the prototype
 buildVersions.forEach(buildVersion => {
   test.describe(`Testing build No. ${buildVersion}`, () => {
     let page;
@@ -23,6 +25,8 @@ buildVersions.forEach(buildVersion => {
     test.beforeEach(async () => {
       await calculatorPage.goto();
       await calculatorPage.selectBuild(buildVersion);
+
+      // checking for all necessary elements to stop tests hanging and waiting for timeout
       const reqElementsVisible = await calculatorPage.reqElementsVisible();
       expect(reqElementsVisible).toBe(true);
     });
