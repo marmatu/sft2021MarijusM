@@ -27,27 +27,27 @@ buildVersions.forEach(buildVersion => {
       expect(reqElementsVisible).toBe(true);
     });
 
-    test('addition is working properly', async () => {
+    test.only('addition is working properly', async () => {
       const result = await calculatorPage.add(inputOne, inputTwo);
       expect(result).toEqual(addRes);
     });
 
-    test('substraction is working properly', async () => {
+    test.only('substraction is working properly', async () => {
       const result = await calculatorPage.substract(inputOne, inputTwo);
       expect(result).toEqual(subRes);
     });
 
-    test('multiplication is working properly', async () => {
+    test.only('multiplication is working properly', async () => {
       const result = await calculatorPage.multiply(inputOne, inputTwo);
       expect(result).toEqual(mulRes);
     });
 
-    test('division is working properly', async () => {
+    test.only('division is working properly', async () => {
       const result = await calculatorPage.divide(inputOne, inputTwo);
       expect(result).toEqual(divRes);
     });
 
-    test('concatenation is working properly', async () => {
+    test.only('concatenation is working properly', async () => {
       const result = await calculatorPage.concatenate(inputOne, inputTwo);
       expect(result).toEqual(conRes);
     });
