@@ -11,13 +11,15 @@ const multiplyValue = '2';
 const divideValue = '3';
 const concatenateValue = '4';
 
+const calculatorUrl = 'https://testsheepnz.github.io/BasicCalculator';
+
 exports.CalculatorPage = class CalculatorPage {
   constructor(page) {
     this.page = page;
   }
 
   async goto() {
-    await this.page.goto('https://testsheepnz.github.io/BasicCalculator');
+    await this.page.goto(calculatorUrl);
   }
 
   async selectBuild(buildVersion) {
