@@ -31,7 +31,7 @@ exports.CalculatorPage = class CalculatorPage {
 
   async add(inputOne, inputTwo) {
     await this.page.selectOption(operationFieldSelector, addValue);
-    await this.fillInputFields(inputOne, inputTwo)
+    await this.fillInputFields(inputOne, inputTwo);
     await this.page.click(calculateButtonSelector);
     const result = await this.page.inputValue(answerFieldSelector);
     return result;
@@ -39,7 +39,7 @@ exports.CalculatorPage = class CalculatorPage {
 
   async substract(inputOne, inputTwo) {
     await this.page.selectOption(operationFieldSelector, substractValue);
-    await this.fillInputFields(inputOne, inputTwo)
+    await this.fillInputFields(inputOne, inputTwo);
     await this.page.click(calculateButtonSelector);
     const result = await this.page.inputValue(answerFieldSelector);
     return result;
@@ -47,7 +47,7 @@ exports.CalculatorPage = class CalculatorPage {
 
   async multiply(inputOne, inputTwo) {
     await this.page.selectOption(operationFieldSelector, multiplyValue);
-    await this.fillInputFields(inputOne, inputTwo)
+    await this.fillInputFields(inputOne, inputTwo);
     await this.page.click(calculateButtonSelector);
     const result = await this.page.inputValue(answerFieldSelector);
     return result;
@@ -55,7 +55,7 @@ exports.CalculatorPage = class CalculatorPage {
 
   async divide(inputOne, inputTwo) {
     await this.page.selectOption(operationFieldSelector, divideValue);
-    await this.fillInputFields(inputOne, inputTwo)
+    await this.fillInputFields(inputOne, inputTwo);
     await this.page.click(calculateButtonSelector);
     const result = await this.page.inputValue(answerFieldSelector);
     return result;
@@ -63,7 +63,7 @@ exports.CalculatorPage = class CalculatorPage {
 
   async concatenate(inputOne, inputTwo) {
     await this.page.selectOption(operationFieldSelector, concatenateValue);
-    await this.fillInputFields(inputOne, inputTwo)
+    await this.fillInputFields(inputOne, inputTwo);
     await this.page.click(calculateButtonSelector);
     const result = await this.page.inputValue(answerFieldSelector);
     return result;
