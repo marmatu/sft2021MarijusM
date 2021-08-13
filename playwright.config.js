@@ -2,6 +2,7 @@
 
 /** @type {import('@playwright/test').PlaywrightTestConfig} */
 const config = {
+  timeout: 5000,
   use: {
     headless: false,
     viewport: { width: 1280, height: 720 },

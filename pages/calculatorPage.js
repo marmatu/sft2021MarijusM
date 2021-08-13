@@ -4,6 +4,10 @@ const inputOneSelector = 'input[name="number1"]';
 const inputTwoSelector = 'input[name="number2"]';
 const calculateButtonSelector = 'input:has-text("Calculate")';
 const answerFieldSelector = '#numberAnswerField';
+const intBoxSelector = 'input[name="intSelection"]';
+
+const divideByZeroErrorSel = 'text=Divide by zero error!';
+const nonNumericErrorSel = 'text=Number 2 is not a number';
 
 const addValue = '0';
 const substractValue = '1';
@@ -72,13 +76,35 @@ exports.CalculatorPage = class CalculatorPage {
   }
 
   async reqElementsVisible() {
-    const buildField = await this.page.isVisible(buildFieldSelector);
-    const operationField = await this.page.isVisible(operationFieldSelector);
-    const inputOne = await this.page.isVisible(inputOneSelector);
-    const inputTwo = await this.page.isVisible(inputTwoSelector);
-    const calculateButton = await this.page.isVisible(calculateButtonSelector);
-    const answerField = await this.page.isVisible(answerFieldSelector);
-    const allElements = [buildField, operationField, inputOne, inputTwo, calculateButton, answerField];
-    return allElements.every(Boolean);
+    const reqElementsVisible = {
+      buildField: await this.page.isVisible(buildFieldSelector),
+      operationField: await this.page.isVisible(operationFieldSelector),
+      inputOne: await this.page.isVisible(inputOneSelector),
+      inputTwo: await this.page.isVisible(inputTwoSelector),
+      calculateButton: await this.page.isVisible(calculateButtonSelector),
+      answerField: await this.page.isVisible(answerFieldSelector),
+      intBox: await this.page.isVisible(intBoxSelector)
+    };
+    return reqElementsVisible;
+  }
+
+  async divByZeroErrVisible(input) {
+    await this.page.selectOption(operationFieldSelector, divideValue);
+    await this.fillInputFields(input, '0');
+    await this.page.click(calculateButtonSelector);
+    const divByZeroErrVisible = await this.page.isVisible(divideByZeroErrorSel);
+    return divByZeroErrVisible;
+  }
+
+  async nonNumericErrVisible(input) {
+    await this.page.selectOption(operationFieldSelector, addValue);
+    await this.fillInputFields(input, 'text');
+    await this.page.click(calculateButtonSelector);
+    const nonNumericErrVisible = await this.page.isVisible(nonNumericErrorSel);
+    return nonNumericErrVisible;
+  }
+
+  async checkIntBox() {
+    await this.page.check(intBoxSelector);
   }
 };
